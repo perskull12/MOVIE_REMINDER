@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movix</title>
+  <style>
+    /* Add some basic styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .movie-form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .movie-list {
+      margin-top: 20px;
+    }
+
+    .movie-item {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Movie Reminder</h1>
+  <div class="movie-form">
+    <div class="form-group">
+      <label for="movie-title">Movie Title:</label>
+      <input type="text" id="movie-title" placeholder="Enter movie title">
+    </div>
+    <div class="form-group">
+      <label for="reminder-date">Reminder Date:</label>
+      <input type="text" id="reminder-date" placeholder="Enter reminder date">
+    </div>
+    <input type="submit" value="Add Reminder" onclick="addReminder()">
+  </div>
+
+  <div class="movie-list" id="movie-list">
+    <!-- Movie reminders will be dynamically added here -->
+  </div>
+
+  <script>
+    function addReminder() {
+      var titleInput = document.getElementById('movie-title');
+      var dateInput = document.getElementById('reminder-date');
+
+      var title = titleInput.value;
+      var date = dateInput.value;
+
+      if (title && date) {
+        var movieList = document.getElementById('movie-list');
+
+        var movieItem = document.createElement('div');
+        movieItem.className = 'movie-item';
+        movieItem.innerHTML = '<strong>Title:</strong> ' + title + ', <strong>Reminder Date:</strong> ' + date;
+
+        movieList.appendChild(movieItem);
+
+        // Clear input fields
+        titleInput.value = '';
+        dateInput.value = '';
+      }
+    }
+  </script>
+</body>
+</html>
