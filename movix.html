@@ -1,99 +1,106 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html>
 <head>
   <title>Movix</title>
-  <style>
-    /* Add some basic styles */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    .movie-form {
-      max-width: 400px;
-      margin: 0 auto;
-    }
-
-    .form-group {
-      margin-bottom: 10px;
-    }
-
-    label {
-      display: block;
-      font-weight: bold;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 5px;
-      font-size: 16px;
-    }
-
-    input[type="submit"] {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-
-    .movie-list {
-      margin-top: 20px;
-    }
-
-    .movie-item {
-      margin-bottom: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="movi.css">
 </head>
 <body>
   <h1>Movie Reminder</h1>
   <div class="movie-form">
-    <div class="form-group">
-      <label for="movie-title">Movie Title:</label>
-      <input type="text" id="movie-title" placeholder="Enter movie title">
-    </div>
-    <div class="form-group">
-      <label for="reminder-date">Reminder Date:</label>
-      <input type="text" id="reminder-date" placeholder="Enter reminder date">
-    </div>
-    <input type="submit" value="Add Reminder" onclick="addReminder()">
+    <form id="reminder-form">
+      <div class="form-group">
+        <label for="movie_title">Movie Title:</label>
+        <input type="text" id="movie_title" placeholder="Enter movie title">
+      </div>
+      <div class="form-group">
+        <label for="reminder_date">Reminder Date:</label>
+        <input type="text" id="reminder_date" placeholder="Enter reminder date">
+      </div>
+      <button type="submit">Add Reminder</button>
+    </form>
   </div>
 
   <div class="movie-list" id="movie-list">
-    <!-- Movie reminders will be dynamically added here -->
+    <!-- Movie reminders -->
   </div>
 
   <script>
-    function addReminder() {
-      var titleInput = document.getElementById('movie-title');
-      var dateInput = document.getElementById('reminder-date');
+    // Array to store reminders
+    var reminders = [];
 
-      var title = titleInput.value;
-      var date = dateInput.value;
+    // Function to display reminders
+    function displayReminders() {
+      var movieList = document.getElementById('movie-list');
+      movieList.innerHTML = '';
 
-      if (title && date) {
-        var movieList = document.getElementById('movie-list');
+      for (var i = 0; i < reminders.length; i++) {
+        var reminder = reminders[i];
 
         var movieItem = document.createElement('div');
         movieItem.className = 'movie-item';
-        movieItem.innerHTML = '<strong>Title:</strong> ' + title + ', <strong>Reminder Date:</strong> ' + date;
+        movieItem.innerHTML = '<strong>Title:</strong> ' + reminder.title + ', <strong>Reminder Date:</strong> ' + reminder.date;
 
+        var deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', function () {
+          deleteReminder(i);
+        });
+
+        var updateButton = document.createElement('button');
+        updateButton.textContent = 'Update';
+        updateButton.addEventListener('click', function () {
+          updateReminder(i);
+        });
+
+        movieItem.appendChild(deleteButton);
+        movieItem.appendChild(updateButton);
         movieList.appendChild(movieItem);
+      }
+    }
 
-        // Clear input fields
+    // Function to add a new reminder
+    function addReminder(title, date) {
+      reminders.push({ title: title, date: date });
+      displayReminders();
+    }
+
+    // Function to delete a reminder
+    function deleteReminder(index) {
+      reminders.splice(index, 1);
+      displayReminders();
+    }
+
+    // Function to update a reminder
+    function updateReminder(index) {
+      var reminder = reminders[index];
+      var titleInput = document.getElementById('movie_title');
+      var dateInput = document.getElementById('reminder_date');
+
+      titleInput.value = reminder.title;
+      dateInput.value = reminder.date;
+
+      deleteReminder(index);
+    }
+
+    // Handle form submission
+    document.getElementById('reminder-form').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent form submission
+
+      var titleInput = document.getElementById('movie_title');
+      var dateInput = document.getElementById('reminder_date');
+
+      var title = titleInput.value.trim();
+      var date = dateInput.value.trim();
+
+      if (title && date) {
+        addReminder(title, date);
         titleInput.value = '';
         dateInput.value = '';
       }
-    }
+    });
+
+    // Initial display of reminders
+    displayReminders();
   </script>
 </body>
 </html>
