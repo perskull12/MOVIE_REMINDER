@@ -1,0 +1,67 @@
+/* Body Styles */
+body {
+  background-color: cornflowerblue;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+/* Container Styles */
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+}
+
+/* Logo Section Styles */
+.logo-section {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.logo-section img {
+  max-width: 150px;
+}
+
+/* Form Styles */
+h1 {
+  color: black;
+  text-align: center;
+  margin-top: 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+input[type="submit"] {
+  background-color: #0400ff;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #3369ff;
+}
+
+/* Link Styles */
+p a {
+  color: #ffffff;
+}
+

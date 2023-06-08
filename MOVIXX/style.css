@@ -1,0 +1,66 @@
+/* Common styles */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  form {
+    margin-top: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input[type="email"],
+  input[type="password"],
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #4750a1;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type="submit"] {
+    background-color: #2e5cbe;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #4955c5;
+  }
+  
+  p {
+    text-align: center;
+  }
+  
+  a {
+    color: #3643b8;
+  }
+  
+  /* Login page specific styles */
+  .login-container {
+    background-color: #f2f2f2;
+  }
+  
+  /* Sign up page specific styles */
+  .signup-container {
+    background-color: #f9f9f9;
+  }
+  

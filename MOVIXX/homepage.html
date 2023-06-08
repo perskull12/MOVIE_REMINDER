@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Reminder</title>
+  <link rel="stylesheet" href="homepage.css">
+</head>
+<body>
+  <div class="container">
+    <div class="logo-section">
+      <img src="logo.png" alt="Movix Logo">
+    </div>
+  <h1>MOVIXX</h1>
+  <div class="container">
+    <a href="display_reminders.php" class="reminders-button">Reminders</a>
+  <div class="reminder-form">
+    <h2>Set Reminder</h2>
+    <form action="process_reminder.php" method="post">
+      <div class="form-group">
+        <label for="movie_title">Movie Title:</label>
+        <input type="text" id="movie_title" name="movie_title" placeholder="Enter movie title">
+      </div>
+      <div class="form-group">
+        <label for="reminder_date">Reminder Date:</label>
+        <input type="text" id="reminder_date" name="reminder_date" placeholder="Enter reminder date">
+      </div>
+      <input type="submit" value="Add Reminder">
+    </form>
+  </div>
+
+  <div class="reminder-list">
+    <h2></h2>
+    
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
